@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Lab7.ViewModels"
+             xmlns:mod="clr-namespace:Lab7.Models"
+             x:Class="Lab7.Views.MainPage"
+             x:DataType="vm:SalesListViewModel">
+
+    <ScrollView>
+        <Grid RowDefinitions="50,auto,auto"
+              Padding="10"
+              RowSpacing="10"
+              ColumnSpacing="10">
+
+            <HorizontalStackLayout Grid.Row="0" >
+                <Entry x:Name="EntryDescription"
+                   Placeholder="Enter description"
+                   Text=""
+                   Margin="10,0"
+                   WidthRequest="200"
+                   />
+                <Entry x:Name="EntryPrice"
+                   Placeholder="Enter price"
+                   Text=""
+                   Margin="10,0"
+                   WidthRequest="200"
+                   />
+                <Button x:Name="BtnAdd"
+                   Text="Add"
+                   />
+
+            </HorizontalStackLayout>
+
+            <CollectionView Grid.Row="1" 
+                            Margin="10"
+                            SelectionMode="Single"
+                            x:Name="CollViewSalesItems"
+                            BackgroundColor="Cornsilk">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="mod:Sale">
+                        <HorizontalStackLayout>
+                            <Label Text="">
+
+                            </Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <Label
+                x:Name="LblTotal"
+                Grid.Row="2"
+                Text=""
+                Margin="10,0"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>
