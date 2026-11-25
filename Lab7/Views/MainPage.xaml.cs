@@ -8,7 +8,7 @@ namespace Lab7.Views
         public MainPage(SalesListViewModel slvm)
         {
             InitializeComponent();
-            BindingContext = slvm;
+            BindingContext = slvm; //The binding context was already set, helps at runtime
         }
 
     }

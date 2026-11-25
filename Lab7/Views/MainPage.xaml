@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:Lab7.ViewModels"
              xmlns:mod="clr-namespace:Lab7.Models"
              x:Class="Lab7.Views.MainPage"
-             x:DataType="vm:SalesListViewModel">
+             x:DataType="vm:SalesListViewModel"> <!--Specifys the type of object we are binding too, helps at complie time-->
 
     <ScrollView>
         <Grid RowDefinitions="50,auto,auto"
@@ -15,18 +15,19 @@
             <HorizontalStackLayout Grid.Row="0" >
                 <Entry x:Name="EntryDescription"
                    Placeholder="Enter description"
-                   Text=""
+                   Text="{Binding Description}"
                    Margin="10,0"
                    WidthRequest="200"
                    />
                 <Entry x:Name="EntryPrice"
                    Placeholder="Enter price"
-                   Text=""
+                   Text="{Binding Price}"
                    Margin="10,0"
                    WidthRequest="200"
                    />
                 <Button x:Name="BtnAdd"
                    Text="Add"
+                   Command="{Binding AddSaleCommand}"
                    />
 
             </HorizontalStackLayout>
@@ -35,12 +36,14 @@
                             Margin="10"
                             SelectionMode="Single"
                             x:Name="CollViewSalesItems"
-                            BackgroundColor="Cornsilk">
+                            BackgroundColor="Cornsilk"
+                            ItemsSource="{Binding Sales}"> <!--Remember to use Itemsource when dealing with ObservableCollections, it determines what to display-->
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="mod:Sale">
                         <HorizontalStackLayout>
-                            <Label Text="">
-
+                            <Label Text="{Binding .}"> <!--This means it will bind to the whole object, instead of a single property, and show the objects ToString method-->
+                                <!--DataTemplate refers to how you would like the imtems inside of your collection to be displayed in the ui. Basically define what one item looks like, and it will be repeated for all items-->
+                                
                             </Label>
                         </HorizontalStackLayout>
                     </DataTemplate>
